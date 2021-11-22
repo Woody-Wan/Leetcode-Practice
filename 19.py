@@ -1,25 +1,27 @@
+# Definition for singly-linked list.
 class ListNode:
-    def __init__(self, val=0, next=None):
+    def __init__(self, val = 0, next = None):
         self.val = val
         self.next = next
 
-class Solution():
-    def deleteLastN(self, head, n):
-        i = 0
-        j = 0
+class Solution:
+    def removeNthFromEnd(self, head, n)
         head_dummy = ListNode()
         head_dummy.next = head
 
-        fast = head_dummy
         slow = head_dummy
+        fast = head_dummy
 
-        for i in range(n):
+        while n > 0:
             fast = fast.next
+            n -= 1
 
-        while fast.next:
+        while fast.next != None:
             slow = slow.next
             fast = fast.next
 
         slow.next = slow.next.next
+
         return head_dummy.next
+
 
