@@ -1,28 +1,34 @@
-#include<string>
+#include <iostream>
+#include <stack>
+#include <string>
 
+using std::stack;
 using std::string;
 
 class Solution {
 public:
-	bool isValid(string s) {
-		stack<int> st;
-		for (int i = 0; i < s.size; i++) {
-			if (s[i] == '{') {
-				st.push('}');
+	bool IsValid(string s) {
+		stack<int> result;
+		for (int i = 0; i < s.size(); i++) {
+			if (s[i] == '(') {
+				result.push(')');
 			}
 			else if (s[i] == '[') {
-				st.push(']');
+				result.push(']');
 			}
-			else if (s[i] == '(') {
-				st.push(')');
+			else if (s[i] == '{') {
+				result.push('}');
 			}
-			else if (st.empty() || st, top() != s[i]) {
+
+			else if (s[i] != result.top() || s.empty()) {
 				return false;
 			}
 			else {
-				st.pop();
+				result.pop();
+			}
+			if (result.empty()) {
+				return true;
 			}
 		}
-		return st.empty();
 	}
 };
